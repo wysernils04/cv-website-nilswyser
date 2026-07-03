@@ -48,7 +48,9 @@ export function Hero({eyebrow, name, valueProp, ctaPrimary, ctaSecondary}: HeroP
     <section
       ref={ref}
       aria-label={name}
-      className="relative flex min-h-[100svh] items-center overflow-hidden"
+      // no overflow-hidden here: an ancestor overflow would break the sticky
+      // name pin; GridLines clips itself.
+      className="relative flex min-h-[100svh] items-center"
     >
       <GridLines columns={4} />
 
@@ -64,7 +66,7 @@ export function Hero({eyebrow, name, valueProp, ctaPrimary, ctaSecondary}: HeroP
           </h1>
         ) : (
           <m.h1
-            className="hero-name"
+            className="hero-name hero-name--pin"
             aria-label={name}
             style={{fontVariationSettings: fvs}}
             initial="hidden"

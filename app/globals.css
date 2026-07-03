@@ -170,8 +170,21 @@ a {
     letter-spacing: -0.02em;
     text-transform: uppercase;
     color: var(--text);
+    /* Reserve the 2-line box: when compression reflows the name from two lines
+       to one mid-scroll, nothing below it may jump (CLS discipline). */
+    min-height: 1.8em;
     /* fallback when the JS width-axis driver hasn't taken over */
     font-variation-settings: "wght" 700, "wdth" 118;
+  }
+  /* Animated variant only (§5.4): the name pins just under the nav while its
+     width axis condenses — "compresses into precision", then the section end
+     pushes it away. The solid background lets later hero content slide beneath
+     it cleanly. Reduced motion never gets this class. */
+  .hero-name--pin {
+    position: sticky;
+    top: 72px;
+    z-index: 10;
+    background: var(--bg);
   }
   .hero-dot {
     display: inline-block;
