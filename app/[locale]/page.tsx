@@ -14,7 +14,6 @@ import {Projects} from '@/components/projects';
 import {Skills} from '@/components/skills';
 import {Contact} from '@/components/contact';
 import {Footer} from '@/components/footer';
-import {ScrollRestore} from '@/components/scroll-restore';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({locale}));
@@ -64,9 +63,8 @@ export default function Page({params}: {params: Promise<{locale: string}>}) {
   return (
     <>
       <SkipLink />
-      <ScrollRestore />
       <div id="top" />
-      <Nav />
+      <Nav locale={locale} />
       <main id="main">
         <Hero {...content.hero} />
         <About content={content.about} />
@@ -75,7 +73,7 @@ export default function Page({params}: {params: Promise<{locale: string}>}) {
         <Skills content={content.skills} />
         <Contact content={content.contact} />
       </main>
-      <Footer contact={content.contact} />
+      <Footer contact={content.contact} locale={locale} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd)}}

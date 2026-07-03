@@ -9,7 +9,13 @@ import {Wordmark} from './wordmark';
 // Footer (§4.8): © line, repeated contact links, locale switch, and the quiet
 // "Designed and built by me" note. The View-source link appears only once the
 // repo is public (§10.12); no Impressum/cookie banner — no cookies, no tracking.
-export function Footer({contact}: {contact: Content['contact']}) {
+export function Footer({
+  contact,
+  locale
+}: {
+  contact: Content['contact'];
+  locale: string;
+}) {
   const t = useTranslations('footer');
   const ta = useTranslations('actions');
 
@@ -23,7 +29,7 @@ export function Footer({contact}: {contact: Content['contact']}) {
       <div className="shell flex flex-col gap-10 py-14 md:py-16">
         <div className="flex flex-wrap items-center justify-between gap-6">
           <Wordmark />
-          <LocaleSwitch />
+          <LocaleSwitch locale={locale} />
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-6">

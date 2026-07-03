@@ -13,8 +13,9 @@
   --border: rgba(244, 243, 239, 0.1);
   --text: #f4f3ef;        /* warm off-white */
   --text-2: #a6a49d;      /* secondary */
-  --accent: #e4342b;      /* Swiss signal red — graphic elements only */
-  --accent-text: #ff6b61; /* AA-safe tint for red text/links on --bg */
+  --accent: #e4342b;          /* Swiss signal red — graphic elements only */
+  --accent-text: #ff6b61;     /* AA-safe tint for red text/links on --bg */
+  --accent-selection: #c82a21; /* darkened red: ::selection bg, 4.97:1 with --text */
 
   /* Type ramp (§5.2) — fluid where it earns it */
   --step-display: clamp(3.5rem, 11vw, 9rem);
@@ -72,7 +73,7 @@ body {
 }
 
 ::selection {
-  background: var(--accent);
+  background: var(--accent-selection);
   color: var(--text);
 }
 
@@ -173,18 +174,8 @@ a {
     /* Reserve the 2-line box: when compression reflows the name from two lines
        to one mid-scroll, nothing below it may jump (CLS discipline). */
     min-height: 1.8em;
-    /* fallback when the JS width-axis driver hasn't taken over */
-    font-variation-settings: "wght" 700, "wdth" 118;
-  }
-  /* Animated variant only (§5.4): the name pins just under the nav while its
-     width axis condenses — "compresses into precision", then the section end
-     pushes it away. The solid background lets later hero content slide beneath
-     it cleanly. Reduced motion never gets this class. */
-  .hero-name--pin {
-    position: sticky;
-    top: 72px;
-    z-index: 10;
-    background: var(--bg);
+    /* static expanded state — the JS width-axis driver takes over from here */
+    font-variation-settings: "wght" 700, "wdth" 125;
   }
   .hero-dot {
     display: inline-block;
@@ -234,22 +225,93 @@ a {
 }
 
 /* ============================================================================
-   No-JS fallback (§2: content readable with JavaScript disabled). Motion
-   serializes its hidden `initial` state into SSR inline styles; this override
-   ships inside a <noscript> block in the layout, so it only applies when JS is
-   off — with JS on, animations behave normally and there is no flash.
+   Animation system — pure CSS driven by a ~2 KB inline enhancement script.
+   Architecture: the HTML is complete and visible by default (no-JS safe by
+   construction). The `js` class on <html> — set by an inline script before
+   first paint — opts elements INTO their hidden pre-animation states.
    ========================================================================== */
-/* (rule lives in app/[locale]/layout.tsx inside <noscript>) — every animated
-   element carries .anim so the override can target it. */
+
+/* Scroll reveals (§5.5): opacity + 16px rise, fire once. The observer adds
+   `.in` as elements enter the viewport. */
+html.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity var(--dur) var(--ease-out),
+    transform var(--dur) var(--ease-out);
+  /* per-element stagger comes from an inline transition-delay */
+}
+html.js [data-reveal].in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Hero load stagger (§5.4): each letter rises in; per-letter delay is inline. */
+html.js .hero-letter {
+  display: inline-block;
+  animation: hero-rise 0.5s var(--ease-out) both;
+}
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.42em);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Signature pin (§5.4), JS + motion-tolerant contexts only: the name sticks
+   under the nav while the width axis condenses, then the section end pushes it
+   away. Solid background lets hero content slide beneath it cleanly. */
+@media (prefers-reduced-motion: no-preference) {
+  html.js .hero-name {
+    position: sticky;
+    top: 72px;
+    z-index: 10;
+    background: var(--bg);
+  }
+}
+
+/* Nav active state (scroll-spy sets aria-current) + hover affordance */
+[data-nav] a {
+  color: var(--text-2);
+  transition: color 150ms var(--ease-out);
+}
+[data-nav] a:hover,
+[data-nav] a:focus-visible,
+[data-nav] a[aria-current] {
+  color: var(--text);
+}
+[data-nav] a > span {
+  padding-bottom: 4px;
+}
+[data-nav] a[aria-current] > span {
+  border-bottom: 1px solid var(--accent);
+}
+
+/* Mobile menu button is an enhancement — without JS it does nothing, so hide
+   it and show the <noscript> anchor row instead. */
+html:not(.js) [data-menu-open] {
+  display: none;
+}
 
 /* ============================================================================
-   Reduced motion — honored globally (§5.5, §7). Animations become instant;
-   the JS motion layer additionally checks useReducedMotion for opacity-only
-   fallbacks.
+   Reduced motion — honored globally (§5.5, §7). Pre-animation states never
+   apply; everything is simply visible and static.
    ========================================================================== */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  html.js [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  html.js .hero-letter {
+    animation: none;
   }
   *,
   *::before,

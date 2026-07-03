@@ -1,11 +1,12 @@
+import {readFileSync} from 'node:fs';
+import {join} from 'node:path';
 import type {Metadata, Viewport} from 'next';
 import {Archivo, Geist_Mono} from 'next/font/google';
 import {notFound} from 'next/navigation';
-import {hasLocale, NextIntlClientProvider} from 'next-intl';
+import {hasLocale} from 'next-intl';
 import {setRequestLocale} from 'next-intl/server';
 import {routing, type Locale} from '@/i18n/routing';
 import {localeMeta, siteUrl} from '@/lib/site';
-import {MotionProvider} from '@/components/motion-provider';
 import '../globals.css';
 
 // Archivo (variable): the site's identity. wght is variable by default; we also
@@ -23,6 +24,11 @@ const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   display: 'swap'
 });
+
+// The whole behavior layer (~2 KB): reveals, hero width axis, scroll-spy,
+// mobile menu, locale-switch scroll restore, copy button. Read once at build
+// time and inlined — the page ships zero framework JavaScript (§2 budget).
+const enhanceJs = readFileSync(join(process.cwd(), 'lib/enhance.js'), 'utf8');
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({locale}));
@@ -65,12 +71,21 @@ export async function generateMetadata({
       description: meta.description,
       url: `/${active}`,
       siteName: 'Nils Wyser',
-      locale: meta.ogLocale
+      locale: meta.ogLocale,
+      images: [
+        {
+          url: `/og/og-${active}.png`,
+          width: 1200,
+          height: 630,
+          alt: meta.title
+        }
+      ]
     },
     twitter: {
       card: 'summary_large_image',
       title: meta.title,
-      description: meta.description
+      description: meta.description,
+      images: [`/og/og-${active}.png`]
     },
     robots: {index: true, follow: true}
   };
@@ -85,21 +100,19 @@ export default async function LocaleLayout({children, params}: Props) {
   setRequestLocale(locale);
 
   return (
-    <html
-      lang={locale}
-      className={`${archivo.variable} ${geistMono.variable}`}
-    >
+    <html lang={locale} className={`${archivo.variable} ${geistMono.variable}`}>
       <body>
-        {/* No-JS fallback (§2): motion SSRs its hidden initial state as inline
-            styles; when JS is disabled nothing would ever animate in. This
-            override — active only without JS — forces every animated element
-            visible. With JS on it never applies, so there is no flash. */}
-        <noscript>
-          <style>{`.anim{opacity:1!important;transform:none!important}`}</style>
-        </noscript>
-        <NextIntlClientProvider>
-          <MotionProvider>{children}</MotionProvider>
-        </NextIntlClientProvider>
+        {/* Before first paint: mark JS availability. Hidden pre-animation
+            states in CSS apply only under html.js — so without JavaScript the
+            page is complete and visible by construction (§2). */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('js')"
+          }}
+        />
+        {children}
+        {/* The entire behavior layer, inlined at build time. */}
+        <script dangerouslySetInnerHTML={{__html: enhanceJs}} />
       </body>
     </html>
   );
