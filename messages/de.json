@@ -1,0 +1,42 @@
+{
+  "nav": {
+    "about": "Über mich",
+    "experience": "Erfahrung",
+    "projects": "Projekte",
+    "skills": "Skills",
+    "contact": "Kontakt",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schliessen",
+    "primaryLabel": "Primär",
+    "sectionsLabel": "Abschnitte"
+  },
+  "a11y": {
+    "skipToContent": "Zum Inhalt springen",
+    "homeLabel": "Nils Wyser — Startseite",
+    "languageLabel": "Sprache",
+    "german": "Deutsch",
+    "english": "English"
+  },
+  "sections": {
+    "aboutEyebrow": "Über mich",
+    "experienceEyebrow": "Erfahrung",
+    "projectsEyebrow": "Projekte",
+    "skillsEyebrow": "Skills",
+    "contactEyebrow": "Kontakt"
+  },
+  "actions": {
+    "viewOnGithub": "Auf GitHub ansehen",
+    "visitSite": "Website öffnen",
+    "email": "E-Mail",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "copyEmail": "E-Mail-Adresse kopieren",
+    "copied": "Kopiert",
+    "visualPending": "Visual folgt"
+  },
+  "footer": {
+    "builtBy": "Entworfen und gebaut von mir.",
+    "viewSource": "Quellcode ansehen",
+    "sourceNote": "[PLACEHOLDER: site repo URL — confirm repo should be public]"
+  }
+}
