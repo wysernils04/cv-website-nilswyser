@@ -37,12 +37,19 @@ function* htmlFiles(dir) {
 }
 
 // RSC payload files (*.txt next to each exported page) exist solely for the
-// client-side router we just removed — nothing requests them.
+// client-side router we just removed — nothing requests them. Only delete a
+// .txt that is a __next segment payload or pairs with an exported .html, so
+// real text assets like robots.txt survive.
 function* rscTxtFiles(dir) {
   for (const entry of readdirSync(dir)) {
     const p = join(dir, entry);
     if (statSync(p).isDirectory()) yield* rscTxtFiles(p);
-    else if (entry.endsWith('.txt')) yield p;
+    else if (
+      entry.endsWith('.txt') &&
+      (entry.startsWith('__next') || existsSync(p.replace(/\.txt$/, '.html')))
+    ) {
+      yield p;
+    }
   }
 }
 
