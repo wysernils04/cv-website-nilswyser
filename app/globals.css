@@ -1,26 +1,248 @@
 @import "tailwindcss";
 
+/* ============================================================================
+   Design tokens — §5. Single dark theme. Warm-neutral monochrome + one micro
+   accent. The boldness budget is spent on typography and motion, not hue.
+   ========================================================================== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
+
+  /* Palette (§5.3) */
+  --bg: #0e0e0d;          /* warm near-black */
+  --surface: #161614;     /* cards, elevated rows */
+  --border: rgba(244, 243, 239, 0.1);
+  --text: #f4f3ef;        /* warm off-white */
+  --text-2: #a6a49d;      /* secondary */
+  --accent: #e4342b;      /* Swiss signal red — graphic elements only */
+  --accent-text: #ff6b61; /* AA-safe tint for red text/links on --bg */
+
+  /* Type ramp (§5.2) — fluid where it earns it */
+  --step-display: clamp(3.5rem, 11vw, 9rem);
+  --step-h2: clamp(2rem, 4.5vw, 3.25rem);
+  --step-h3: 1.375rem;
+  --step-body: clamp(1rem, 0.95rem + 0.3vw, 1.125rem);
+  --step-mono: 0.8125rem;
+
+  /* Spacing / rhythm (§5.1) — 8pt scale, section padding is fluid */
+  --content-max: 1200px;
+  --page-margin: clamp(20px, 5vw, 80px);
+  --section-pad: clamp(72px, 12vw, 160px);
+
+  /* Motion (§5.5) */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur: 560ms;
 }
 
+/* ----------------------------------------------------------------------------
+   Tailwind v4 theme bridge — expose tokens as utilities (bg-*, text-*, etc.)
+   -------------------------------------------------------------------------- */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-line: var(--border);
+  --color-fg: var(--text);
+  --color-muted: var(--text-2);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-text);
+
+  --font-display: var(--font-archivo);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ============================================================================
+   Base
+   ========================================================================== */
+html {
+  scroll-behavior: smooth;
+  /* nav is ~64px; keep anchored sections clear of it */
+  scroll-padding-top: 88px;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  font-size: var(--step-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* default to a slightly warmer, mid weight for body */
+  font-variation-settings: "wght" 420, "wdth" 100;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--text);
+}
+
+/* Visible focus ring on every interactive element (§7) */
+:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
+  border-radius: 1px;
+}
+/* Remove the default ring when focus is not keyboard-driven */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ============================================================================
+   Semantic type helpers
+   ========================================================================== */
+@layer components {
+  /* Mono utility label — eyebrows, tags, dates, facts row (§5.2) */
+  .eyebrow {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: var(--step-mono);
+    line-height: 1.2;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-2);
+    font-weight: 500;
+  }
+
+  .display-2 {
+    font-family: var(--font-archivo), sans-serif;
+    font-size: var(--step-h2);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    font-variation-settings: "wght" 640, "wdth" 112;
+    text-wrap: balance;
+  }
+
+  .display-3 {
+    font-family: var(--font-archivo), sans-serif;
+    font-size: var(--step-h3);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    font-variation-settings: "wght" 580, "wdth" 100;
+  }
+
+  /* Animated link underline (§5.5) — 150ms accent underline on hover/focus */
+  .link-underline {
+    background-image: linear-gradient(var(--accent-text), var(--accent-text));
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 1px;
+    transition: background-size 150ms var(--ease-out);
+    padding-bottom: 1px;
+  }
+  .link-underline:hover,
+  .link-underline:focus-visible {
+    background-size: 100% 1px;
+  }
+
+  /* Mono tag chip — project tags, skill items */
+  .tag {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: var(--step-mono);
+    letter-spacing: 0.04em;
+    color: var(--text-2);
+    white-space: nowrap;
+  }
+
+  /* Verbatim, greppable placeholder flag (rendered by <FlaggedText>). Deliberately
+     loud so Nils can spot every unresolved [PLACEHOLDER: …] in the live site. */
+  .ph {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 0.82em;
+    line-height: 1.35;
+    color: var(--accent-text);
+    background: color-mix(in oklab, var(--accent) 12%, transparent);
+    border: 1px dashed color-mix(in oklab, var(--accent) 45%, transparent);
+    border-radius: 3px;
+    padding: 0.05em 0.4em;
+  }
+
+  /* ---- Hero signature ---- */
+  .hero-name {
+    display: block;
+    margin-top: 0.14em;
+    font-family: var(--font-archivo), sans-serif;
+    font-size: var(--step-display);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: var(--text);
+    /* fallback when the JS width-axis driver hasn't taken over */
+    font-variation-settings: "wght" 700, "wdth" 118;
+  }
+  .hero-dot {
+    display: inline-block;
+    width: 0.16em;
+    height: 0.16em;
+    margin-left: 0.1em;
+    background: var(--accent);
+    vertical-align: baseline;
+  }
+
+  /* ---- Buttons ---- */
+  .cta-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.4rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--text);
+    font-weight: 500;
+    transition:
+      border-color 150ms var(--ease-out),
+      background-color 150ms var(--ease-out);
+  }
+  .cta-primary:hover,
+  .cta-primary:focus-visible {
+    border-color: var(--accent);
+    background: var(--surface);
+  }
+  .cta-arrow {
+    transition: transform 150ms var(--ease-out);
+  }
+  .cta-primary:hover .cta-arrow,
+  .cta-primary:focus-visible .cta-arrow {
+    transform: translateX(3px);
+  }
+}
+
+/* ============================================================================
+   Layout helpers
+   ========================================================================== */
+@utility shell {
+  width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: var(--page-margin);
+}
+
+/* ============================================================================
+   No-JS fallback (§2: content readable with JavaScript disabled). Motion
+   serializes its hidden `initial` state into SSR inline styles; this override
+   ships inside a <noscript> block in the layout, so it only applies when JS is
+   off — with JS on, animations behave normally and there is no flash.
+   ========================================================================== */
+/* (rule lives in app/[locale]/layout.tsx inside <noscript>) — every animated
+   element carries .anim so the override can target it. */
+
+/* ============================================================================
+   Reduced motion — honored globally (§5.5, §7). Animations become instant;
+   the JS motion layer additionally checks useReducedMotion for opacity-only
+   fallbacks.
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
