@@ -16,13 +16,14 @@
 //
 // If a client component is ever added back, delete this script from
 // package.json's build and the runtime returns automatically.
-import {readdirSync, readFileSync, writeFileSync, statSync, existsSync} from 'node:fs';
+import {readdirSync, readFileSync, writeFileSync, statSync, existsSync, rmSync} from 'node:fs';
 import {join} from 'node:path';
 
 // On Vercel, the builder packages .next into .vercel/output DURING `next build`
 // (onBuildComplete) — i.e. BEFORE this script runs — so the deployed prerender
 // fallbacks live there and must be stripped too. Locally only .next exists.
 const ROOTS = [
+  join(process.cwd(), 'out'),
   join(process.cwd(), '.next/server/app'),
   join(process.cwd(), '.vercel/output')
 ].filter((p) => existsSync(p));
@@ -32,6 +33,16 @@ function* htmlFiles(dir) {
     const p = join(dir, entry);
     if (statSync(p).isDirectory()) yield* htmlFiles(p);
     else if (entry.endsWith('.html')) yield p;
+  }
+}
+
+// RSC payload files (*.txt next to each exported page) exist solely for the
+// client-side router we just removed — nothing requests them.
+function* rscTxtFiles(dir) {
+  for (const entry of readdirSync(dir)) {
+    const p = join(dir, entry);
+    if (statSync(p).isDirectory()) yield* rscTxtFiles(p);
+    else if (entry.endsWith('.txt')) yield p;
   }
 }
 
@@ -53,8 +64,16 @@ for (const file of ROOTS.flatMap((r) => [...htmlFiles(r)])) {
     savedBytes += before.length - after.length;
   }
 }
+const outDir = join(process.cwd(), 'out');
+let rscRemoved = 0;
+if (existsSync(outDir)) {
+  for (const f of rscTxtFiles(outDir)) {
+    rmSync(f);
+    rscRemoved++;
+  }
+}
 console.log(
-  `strip-runtime: cleaned ${files} file(s), removed ${(savedBytes / 1024).toFixed(1)} KB of hydration payload`
+  `strip-runtime: cleaned ${files} file(s), removed ${(savedBytes / 1024).toFixed(1)} KB of hydration payload, deleted ${rscRemoved} orphaned RSC payload file(s)`
 );
 if (files === 0) {
   console.warn('strip-runtime: WARNING — no files changed; did Next change its output layout?');

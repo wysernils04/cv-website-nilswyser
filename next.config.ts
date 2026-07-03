@@ -5,10 +5,12 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
-  // Serve modern formats first; next/image negotiates per request.
-  images: {
-    formats: ['image/avif', 'image/webp']
-  }
+  // Fully static export (§6: "everything statically generated at build time").
+  // The build emits plain HTML into out/, which scripts/strip-runtime.mjs then
+  // post-processes — the deployed artifact is exactly what we verified locally.
+  // The / → /de redirect lives in vercel.json (middleware is unavailable in
+  // export mode, and nothing else needed it).
+  output: 'export'
 };
 
 export default withNextIntl(nextConfig);
