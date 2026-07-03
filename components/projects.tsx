@@ -64,14 +64,32 @@ export function Projects({content}: {content: Content['projects']}) {
 
               {/* Visual slot — real screenshot/diagram only (§4.5). Until the
                   asset exists, an honest flagged note fills the frame. */}
-              <div
-                className="flex min-h-48 items-center justify-center border border-dashed p-6 md:min-h-full"
-                style={{borderColor: 'var(--border)'}}
-              >
-                <p className="eyebrow text-center">
-                  {ta('visualPending')} — <FlaggedText text={project.visualNote} />
-                </p>
-              </div>
+              {project.visual ? (
+                <div className="overflow-hidden border border-line">
+                  {/* Plain img on purpose: static export ships no JS, and the
+                      explicit dimensions guarantee zero layout shift. Hover
+                      scale per §4.5 card anatomy. */}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={project.visual.src}
+                    alt={project.visual.alt}
+                    width={project.visual.width}
+                    height={project.visual.height}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                  />
+                </div>
+              ) : (
+                <div
+                  className="flex min-h-48 items-center justify-center border border-dashed p-6 md:min-h-full"
+                  style={{borderColor: 'var(--border)'}}
+                >
+                  <p className="eyebrow text-center">
+                    {ta('visualPending')} — <FlaggedText text={project.visualNote} />
+                  </p>
+                </div>
+              )}
             </article>
           );
 

@@ -8,6 +8,7 @@ type HeroProps = {
   valueProp: string;
   ctaPrimary: {label: string; href: string};
   ctaSecondary: {label: string; href: string};
+  cvLink?: {label: string; href: string};
 };
 
 // The one loud moment (§5.4) — rendered entirely on the server. NILS WYSER in
@@ -17,7 +18,7 @@ type HeroProps = {
 // while the name pins under the nav: "compresses into precision". Without JS
 // the name is simply static and expanded; reduced motion disables everything
 // via media queries and a matchMedia guard.
-export function Hero({eyebrow, name, valueProp, ctaPrimary, ctaSecondary}: HeroProps) {
+export function Hero({eyebrow, name, valueProp, ctaPrimary, ctaSecondary, cvLink}: HeroProps) {
   const words = name.toUpperCase().split(' ');
   let letterIndex = 0;
 
@@ -75,6 +76,12 @@ export function Hero({eyebrow, name, valueProp, ctaPrimary, ctaSecondary}: HeroP
           <a href={ctaSecondary.href} className="text-fg link-underline">
             {ctaSecondary.label}
           </a>
+          {/* Quiet CV download (§4.2) — only rendered once the PDF exists. */}
+          {cvLink && (
+            <a href={cvLink.href} className="eyebrow link-underline" download>
+              {cvLink.label}
+            </a>
+          )}
         </div>
       </div>
     </section>

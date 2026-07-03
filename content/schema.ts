@@ -23,6 +23,12 @@ export type Project = {
   href: string; // may be a placeholder → rendered as a flag, not a link
   /** Note describing the still-missing visual asset (§4.5). */
   visualNote: string;
+  /**
+   * Real screenshot/diagram (§4.5 — never stock, never AI). Drop the file in
+   * public/projects/ and fill this in; width/height are the intrinsic pixel
+   * size (required so the layout never shifts). Replaces the visualNote frame.
+   */
+  visual?: {src: string; alt: string; width: number; height: number};
 };
 
 export type SkillGroup = {
@@ -38,6 +44,11 @@ export type Content = {
     valueProp: string;
     ctaPrimary: Cta;
     ctaSecondary: Cta;
+    /**
+     * Quiet third CTA (§4.2): "Download CV (PDF)". Leave undefined until the
+     * PDF exists in public/cv/ — the link is omitted entirely, never dead.
+     */
+    cvLink?: Cta;
   };
   about: {
     heading: string;
