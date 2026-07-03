@@ -16,10 +16,16 @@
 //
 // If a client component is ever added back, delete this script from
 // package.json's build and the runtime returns automatically.
-import {readdirSync, readFileSync, writeFileSync, statSync} from 'node:fs';
+import {readdirSync, readFileSync, writeFileSync, statSync, existsSync} from 'node:fs';
 import {join} from 'node:path';
 
-const ROOT = join(process.cwd(), '.next/server/app');
+// On Vercel, the builder packages .next into .vercel/output DURING `next build`
+// (onBuildComplete) — i.e. BEFORE this script runs — so the deployed prerender
+// fallbacks live there and must be stripped too. Locally only .next exists.
+const ROOTS = [
+  join(process.cwd(), '.next/server/app'),
+  join(process.cwd(), '.vercel/output')
+].filter((p) => existsSync(p));
 
 function* htmlFiles(dir) {
   for (const entry of readdirSync(dir)) {
@@ -35,7 +41,7 @@ const flightScript = /<script>(?:\(self\.__next_f=self\.__next_f\|\|\[\]\)|self\
 
 let files = 0;
 let savedBytes = 0;
-for (const file of htmlFiles(ROOT)) {
+for (const file of ROOTS.flatMap((r) => [...htmlFiles(r)])) {
   const before = readFileSync(file, 'utf8');
   const after = before
     .replace(externalScript, '')
