@@ -20,9 +20,9 @@ Legend: 🔴 blocks a real launch · 🟡 improves the site · ⚪ optional / ni
 - [ ] ⚪ **Personal closing sentence** (music/DJing angle?) — yes/no + wording. — §10.11
 
 ## Experience
-- [ ] 🔴 **Internship start date** (Baumann & Cie). — §10.8
+- [x] ~~🔴 **Internship start date**~~ — resolved: May 2026 (Mai 2026 – heute / May 2026 – present).
 - [ ] 🔴 **Employer-approved bullet wording** for the internship (report consolidation, test tooling, docs). — §10.4
-- [ ] 🔴 **Roche apprenticeship years** (e.g. 20XX–20XX). — §10.8
+- [x] ~~🔴 **Roche apprenticeship years**~~ — resolved: 2020–2024.
 - [ ] 🟡 **2–3 result bullets per Roche rotation** (Manufacturing IT · RSS · PRED) — reuse CV bullets. — §4.4/§10.8
 - [ ] 🟡 **Berufsmaturität direction + completion year**. — §4.4/§10.8
 - [ ] ⚪ **Passerelle / university plans** — mention (ambition) or omit (availability)? Omitted until answered. — §10.9

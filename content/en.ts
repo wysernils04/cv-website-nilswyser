@@ -35,7 +35,7 @@ export const en: Content = {
         role: 'IT Internship',
         org: 'Baumann & Cie, Banquiers',
         location: 'Basel',
-        period: '[PLACEHOLDER: start date] – present',
+        period: 'May 2026 – present',
         bullets: [
           'Consolidating multilingual SAP Crystal Reports (DE/FR/EN) into single Oracle-backed base reports.',
           'Built Python test tooling to validate report migrations: rendering, diffing, regression dashboards.',
@@ -48,7 +48,7 @@ export const en: Content = {
         role: 'Betriebsinformatiker EFZ Apprenticeship',
         org: 'F. Hoffmann-La Roche AG',
         location: 'Basel / Kaiseraugst',
-        period: '[PLACEHOLDER: years, e.g. 20XX–20XX]',
+        period: '2020–2024',
         bullets: [
           'Rotations: Manufacturing IT · Roche Services & Solutions · PRED Data & Analytics.',
           '[PLACEHOLDER: 2–3 result-oriented bullets per rotation or overall — reuse the CV bullets Nils already wrote]'
