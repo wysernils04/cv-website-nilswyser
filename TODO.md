@@ -15,7 +15,7 @@ Legend: 🔴 blocks a real launch · 🟡 improves the site · ⚪ optional / ni
 
 ## About
 - [ ] 🔴 **Employer may be named publicly?** (Baumann & Cie, Banquiers) — gates §4.3 + §4.4 wording. — §10.4
-- [ ] 🟡 **English level** to state (e.g. C1). — §10.10
+- [x] ~~🟡 **English level**~~ — resolved: C1.
 - [ ] ⚪ **Availability / open-to line** (if any). — §10.10
 - [ ] ⚪ **Personal closing sentence** (music/DJing angle?) — yes/no + wording. — §10.11
 
@@ -24,7 +24,7 @@ Legend: 🔴 blocks a real launch · 🟡 improves the site · ⚪ optional / ni
 - [ ] 🔴 **Employer-approved bullet wording** for the internship (report consolidation, test tooling, docs). — §10.4
 - [x] ~~🔴 **Roche apprenticeship years**~~ — resolved: 2020–2024.
 - [ ] 🟡 **2–3 result bullets per Roche rotation** (Manufacturing IT · RSS · PRED) — reuse CV bullets. — §4.4/§10.8
-- [ ] 🟡 **Berufsmaturität direction + completion year**. — §4.4/§10.8
+- [x] ~~🟡 **Berufsmaturität direction + completion year**~~ — resolved: technische Richtung, 2025.
 - [ ] ⚪ **Passerelle / university plans** — mention (ambition) or omit (availability)? Omitted until answered. — §10.9
 
 ## Projects

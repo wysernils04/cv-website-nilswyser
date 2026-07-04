@@ -25,7 +25,7 @@ export const de: Content = {
       '[PLACEHOLDER: one personal closing sentence from Nils — interest/angle, e.g. music/DJing, only if he wants it public]',
     facts: [
       {label: 'Standort', value: 'Basel, Schweiz'},
-      {label: 'Sprachen', value: 'Deutsch — Muttersprache · Englisch — [PLACEHOLDER: level, e.g. C1]'},
+      {label: 'Sprachen', value: 'Deutsch — Muttersprache · Englisch — C1'},
       {label: 'Fokus', value: 'Daten & Reporting · Backend · Tooling'},
       {label: 'Verfügbarkeit', value: '[PLACEHOLDER: availability / open-to line, if any]'}
     ]
@@ -61,7 +61,7 @@ export const de: Content = {
     education: {
       label: 'Ausbildung',
       value:
-        'Betriebsinformatiker EFZ + Berufsmaturität [PLACEHOLDER: BM direction + completion year]'
+        'Betriebsinformatiker EFZ + Berufsmaturität, technische Richtung (2025)'
     }
   },
   projects: {
