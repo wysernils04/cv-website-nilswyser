@@ -128,6 +128,6 @@ export const en: Content = {
     heading: "Let's talk.",
     lead: 'The fastest way to reach me is email.',
     email: 'nils.wyser@gmail.com',
-    linkedin: 'https://www.linkedin.com/in/nilswyser'
+    linkedin: 'https://www.linkedin.com/in/nils-wyser'
   }
 };

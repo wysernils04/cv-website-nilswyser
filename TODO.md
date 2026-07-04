@@ -9,7 +9,7 @@ Legend: 🔴 blocks a real launch · 🟡 improves the site · ⚪ optional / ni
 
 ## Contact & identity
 - [x] ~~🔴 **Public email address**~~ — resolved: `nils.wyser@gmail.com` (mailto + copy button live).
-- [x] ~~🔴 **LinkedIn URL**~~ — resolved: `https://www.linkedin.com/in/nilswyser` (contact, footer, JSON-LD `sameAs`). LinkedIn blocks automated checks — click it once to confirm the profile slug.
+- [x] ~~🔴 **LinkedIn URL**~~ — resolved: `https://www.linkedin.com/in/nils-wyser` (confirmed against the CV; wired in contact, footer, JSON-LD `sameAs`).
 - [ ] 🟡 **Public location wording** for the hero eyebrow (currently `Basel, Switzerland`). — §4.2
 - [ ] ⚪ **Domain** — `nilswyser.ch` / `.dev`? Launches on `*.vercel.app` until decided. — §10.1
 
