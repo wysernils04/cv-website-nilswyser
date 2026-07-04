@@ -117,7 +117,7 @@ export const de: Content = {
   contact: {
     heading: 'Sprechen wir.',
     lead: 'Am schnellsten erreichen Sie mich per E-Mail.',
-    email: '[PLACEHOLDER: public email address]',
-    linkedin: '[PLACEHOLDER: LinkedIn URL]'
+    email: 'nils.wyser@gmail.com',
+    linkedin: 'https://www.linkedin.com/in/nilswyser'
   }
 };

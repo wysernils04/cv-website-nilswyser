@@ -114,7 +114,7 @@ export const en: Content = {
   contact: {
     heading: "Let's talk.",
     lead: 'The fastest way to reach me is email.',
-    email: '[PLACEHOLDER: public email address]',
-    linkedin: '[PLACEHOLDER: LinkedIn URL]'
+    email: 'nils.wyser@gmail.com',
+    linkedin: 'https://www.linkedin.com/in/nilswyser'
   }
 };

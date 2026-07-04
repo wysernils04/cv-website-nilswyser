@@ -8,8 +8,8 @@ running site and swap it for real content. Nothing here is invented data — gre
 Legend: 🔴 blocks a real launch · 🟡 improves the site · ⚪ optional / nice-to-have
 
 ## Contact & identity
-- [ ] 🔴 **Public email address** for the Contact section (mailto + copy button). — §10.2
-- [ ] 🔴 **LinkedIn URL** (exact). Used in nav-adjacent contact, footer, and JSON-LD `sameAs`. — §10.3
+- [x] ~~🔴 **Public email address**~~ — resolved: `nils.wyser@gmail.com` (mailto + copy button live).
+- [x] ~~🔴 **LinkedIn URL**~~ — resolved: `https://www.linkedin.com/in/nilswyser` (contact, footer, JSON-LD `sameAs`). LinkedIn blocks automated checks — click it once to confirm the profile slug.
 - [ ] 🟡 **Public location wording** for the hero eyebrow (currently `Basel, Switzerland`). — §4.2
 - [ ] ⚪ **Domain** — `nilswyser.ch` / `.dev`? Launches on `*.vercel.app` until decided. — §10.1
 
