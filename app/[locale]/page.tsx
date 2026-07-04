@@ -14,6 +14,7 @@ import {Projects} from '@/components/projects';
 import {Skills} from '@/components/skills';
 import {Contact} from '@/components/contact';
 import {Footer} from '@/components/footer';
+import {KineticBand} from '@/components/kinetic-band';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({locale}));
@@ -71,6 +72,7 @@ export default function Page({params}: {params: Promise<{locale: string}>}) {
         <Experience content={content.experience} />
         <Projects content={content.projects} />
         <Skills content={content.skills} />
+        <KineticBand phrase={content.contact.heading} />
         <Contact content={content.contact} />
       </main>
       <Footer contact={content.contact} locale={locale} />

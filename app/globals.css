@@ -298,6 +298,162 @@ html:not(.js) [data-menu-open] {
 }
 
 /* ============================================================================
+   Signature layer — the "wow" on top of the Swiss base. Every effect here is
+   an enhancement: gated on html.js (set pre-paint) and, where it moves, on
+   prefers-reduced-motion: no-preference. Without JS or with reduced motion the
+   page is simply its calm, complete self.
+   ========================================================================== */
+
+/* ---- Hero entrance: the name settles from condensed to expanded ----------
+   The width axis is the site's motif; the entrance establishes it. The
+   animation deliberately has no forwards-fill so that, once finished, the
+   inline style written by the scroll driver takes over seamlessly. */
+@media (prefers-reduced-motion: no-preference) {
+  html.js .hero-name {
+    animation: hero-settle 1.15s cubic-bezier(0.22, 1, 0.36, 1) 0.12s backwards;
+  }
+  @keyframes hero-settle {
+    from {
+      font-variation-settings: "wght" 620, "wdth" 78;
+    }
+    to {
+      font-variation-settings: "wght" 700, "wdth" 125;
+    }
+  }
+}
+
+/* ---- Grid lines draw themselves in (architecture being built) ------------ */
+@media (prefers-reduced-motion: no-preference) {
+  html.js .gridline {
+    transform-origin: top;
+    animation: gridline-draw 1.3s var(--ease-out) both;
+  }
+  html.js .gridline:nth-child(2) { animation-delay: 0.07s; }
+  html.js .gridline:nth-child(3) { animation-delay: 0.14s; }
+  html.js .gridline:nth-child(4) { animation-delay: 0.21s; }
+  html.js .gridline:nth-child(5) { animation-delay: 0.28s; }
+  @keyframes gridline-draw {
+    from { transform: scaleY(0); }
+  }
+}
+
+/* ---- Scroll progress hairline (nav): precise, Swiss, informative --------- */
+.nav-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  pointer-events: none;
+}
+
+/* ---- Sliding accent indicator under the active nav item ------------------ */
+.nav-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 0;
+  background: var(--accent);
+  opacity: 0;
+  transition:
+    left 0.35s var(--ease-out),
+    width 0.35s var(--ease-out),
+    opacity 0.25s var(--ease-out);
+  pointer-events: none;
+}
+/* with JS, the sliding bar replaces the per-link static underline */
+html.js [data-nav] a[aria-current] > span {
+  border-bottom-color: transparent;
+}
+
+/* ---- Kinetic type band: hollow display type that moves WITH scroll -------
+   Never loops idly (§5.5): its offset is a pure function of scroll position,
+   so it moves exactly when the visitor moves and stops when they stop. */
+.kinetic {
+  overflow: hidden;
+  border-block: 1px solid var(--border);
+  padding-block: 0.18em;
+  font-family: var(--font-archivo), sans-serif;
+  font-size: clamp(3.5rem, 9vw, 7.5rem);
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  font-variation-settings: "wght" 700, "wdth" 125;
+  white-space: nowrap;
+  user-select: none;
+}
+.kinetic-track {
+  display: inline-block;
+  will-change: transform;
+}
+.kinetic span {
+  display: inline-block;
+  color: transparent;
+  -webkit-text-stroke: 1px color-mix(in oklab, var(--text) 30%, transparent);
+}
+@supports not (-webkit-text-stroke: 1px black) {
+  .kinetic span {
+    color: color-mix(in oklab, var(--text) 14%, transparent);
+  }
+}
+
+/* ---- Project visuals: monochrome until earned ----------------------------
+   The world is monochrome; color is the hover reward. Hover-capable pointers
+   only — touch users get full color immediately. */
+@media (hover: hover) {
+  html.js .project-visual img {
+    filter: grayscale(1);
+    transition: filter 0.5s var(--ease-out), transform 0.3s var(--ease-out);
+  }
+  html.js .group:hover .project-visual img,
+  html.js a:focus-visible .project-visual img {
+    filter: none;
+  }
+}
+
+/* ---- Headings ink in as they cross the viewport (scroll-driven CSS) ------ */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    html.js .display-2 {
+      animation: ink-in linear both;
+      animation-timeline: view();
+      animation-range: entry 20% cover 45%;
+    }
+  }
+}
+@keyframes ink-in {
+  from {
+    color: color-mix(in oklab, var(--text) 35%, transparent);
+  }
+  to {
+    color: var(--text);
+  }
+}
+
+/* ---- Contact finale: the closing heading speaks at hero scale ------------ */
+#contact .display-2 {
+  font-size: clamp(2.75rem, 7.5vw, 6rem);
+}
+
+/* ---- Film grain: makes the near-black feel printed, not flat -------------
+   Static texture (nothing animates), pure CSS, sits above content but under
+   the skip link. */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
+
+/* ============================================================================
    Reduced motion — honored globally (§5.5, §7). Pre-animation states never
    apply; everything is simply visible and static.
    ========================================================================== */

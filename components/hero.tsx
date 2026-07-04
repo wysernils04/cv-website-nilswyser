@@ -30,7 +30,9 @@ export function Hero({eyebrow, name, valueProp, ctaPrimary, ctaSecondary, cvLink
       <GridLines columns={4} />
 
       <div className="shell relative w-full pt-28 pb-24 md:pt-32">
-        <p className="eyebrow max-w-md">
+        {/* data-hero-fade: the enhancement script parallaxes these away at
+            staggered rates while the pinned name condenses above them */}
+        <p className="eyebrow max-w-md" data-hero-fade="1">
           <FlaggedText text={eyebrow} />
         </p>
 
@@ -62,11 +64,17 @@ export function Hero({eyebrow, name, valueProp, ctaPrimary, ctaSecondary, cvLink
           </span>
         </h1>
 
-        <p className="mt-8 max-w-[46ch] text-[color:var(--text-2)] md:mt-10 md:text-[1.2rem]">
+        <p
+          className="mt-8 max-w-[46ch] text-[color:var(--text-2)] md:mt-10 md:text-[1.2rem]"
+          data-hero-fade="2"
+        >
           {valueProp}
         </p>
 
-        <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4 md:mt-12">
+        <div
+          className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4 md:mt-12"
+          data-hero-fade="3"
+        >
           <a href={ctaPrimary.href} className="cta-primary">
             {ctaPrimary.label}
             <span aria-hidden className="cta-arrow">

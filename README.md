@@ -7,7 +7,7 @@ Live: <https://cv-website-nilswyser.vercel.app>
 
 The site is its own work sample. It ships **zero framework JavaScript** — the
 whole behavior layer (scroll reveals, the hero's variable-font signature,
-scroll-spy, mobile menu, copy-to-clipboard) is ~2 KB of inline vanilla JS over
+scroll-spy, mobile menu, copy-to-clipboard) is ~4 KB of inline vanilla JS over
 fully static HTML. Lighthouse on the deployed URL: **98–100 performance
 (mobile), 100/100/100 accessibility · best practices · SEO**, LCP 0.3 s
 desktop / ≤1.7 s mobile, CLS 0, TBT 0 ms.

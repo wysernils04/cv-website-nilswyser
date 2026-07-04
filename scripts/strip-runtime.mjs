@@ -57,14 +57,32 @@ const externalScript = /<script\s[^>]*src="\/_next\/static\/[^"]*"[^>]*><\/scrip
 const scriptPreload = /<link\s[^>]*rel="preload"[^>]*as="script"[^>]*\/?>/g;
 const flightScript = /<script>(?:\(self\.__next_f=self\.__next_f\|\|\[\]\)|self\.__next_f)[\s\S]*?<\/script>/g;
 
+// View-source is a feature (§2): greet the people who look.
+const sourceBanner = `
+<!--
+
+  NW.  Nils Wyser — Basel
+
+  What you are reading is the entire site: static HTML, CSS, and about
+  4 KB of hand-written vanilla JavaScript. No framework on the wire.
+
+  Reading page source is exactly the kind of thing I would do, too.
+  Let's talk: nils.wyser@gmail.com
+
+-->
+`;
+
 let files = 0;
 let savedBytes = 0;
 for (const file of ROOTS.flatMap((r) => [...htmlFiles(r)])) {
   const before = readFileSync(file, 'utf8');
-  const after = before
+  let after = before
     .replace(externalScript, '')
     .replace(scriptPreload, '')
     .replace(flightScript, '');
+  if (!after.includes('NW.  Nils Wyser')) {
+    after = after.replace(/(<!doctype html>)/i, `$1${sourceBanner}`);
+  }
   if (after !== before) {
     writeFileSync(file, after);
     files++;

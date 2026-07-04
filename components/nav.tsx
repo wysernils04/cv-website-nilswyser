@@ -14,7 +14,9 @@ export function Nav({locale}: {locale: string}) {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
-      <div className="border-b border-line bg-[color-mix(in_oklab,var(--bg)_82%,transparent)] backdrop-blur-md">
+      <div className="relative border-b border-line bg-[color-mix(in_oklab,var(--bg)_82%,transparent)] backdrop-blur-md">
+        {/* scroll progress hairline — driven by the enhancement script */}
+        <span aria-hidden data-progress="" className="nav-progress" />
         <nav
           aria-label={t('primaryLabel')}
           className="shell flex h-16 items-center justify-between gap-4"
@@ -23,8 +25,9 @@ export function Nav({locale}: {locale: string}) {
             <Wordmark />
           </a>
 
-          {/* Desktop anchors — scroll-spy toggles aria-current */}
-          <ul data-nav="" className="hidden items-center gap-7 md:flex">
+          {/* Desktop anchors — scroll-spy toggles aria-current and slides the
+              single accent indicator between items */}
+          <ul data-nav="" className="relative hidden items-center gap-7 md:flex">
             {items.map(({id, label}) => (
               <li key={id}>
                 <a href={`#${id}`} className="eyebrow inline-block py-2">
@@ -32,6 +35,7 @@ export function Nav({locale}: {locale: string}) {
                 </a>
               </li>
             ))}
+            <span aria-hidden data-nav-indicator="" className="nav-indicator" />
           </ul>
 
           <div className="flex items-center gap-4">

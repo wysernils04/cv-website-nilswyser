@@ -77,7 +77,7 @@ Local check: `npm run build && npx serve out` → http://localhost:3000/de.
 
 ## The one unusual thing in this build
 
-This site ships **zero framework JavaScript** (~2 KB of inline vanilla JS
+This site ships **zero framework JavaScript** (~4 KB of inline vanilla JS
 total). Next.js always emits its client runtime, so `npm run build` runs
 `scripts/strip-runtime.mjs` afterwards, which removes the unused runtime
 `<script>` tags from the exported HTML in `out/`. That is only safe because

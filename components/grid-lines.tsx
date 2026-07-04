@@ -12,7 +12,7 @@ export function GridLines({columns = 4}: {columns?: number}) {
         {lines.map((i) => (
           <span
             key={i}
-            className="absolute top-0 bottom-0 w-px"
+            className="gridline absolute top-0 bottom-0 w-px"
             style={{
               left: `${(i / columns) * 100}%`,
               background: 'var(--border)'

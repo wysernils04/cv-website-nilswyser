@@ -47,9 +47,9 @@ Legend: 🔴 blocks a real launch · 🟡 improves the site · ⚪ optional / ni
 ## Resolved by the build (defaults chosen — change if you disagree)
 - GitHub: `https://github.com/wysernils04` (from §4.5/§4.7) — wired live.
 - Framework: **Next.js 16** (spec said 15; 16 is current stable, strict superset for a static one-pager).
-- Motion: spec's `motion`/LazyMotion was replaced by ~2 KB of vanilla JS + CSS — same
+- Motion: spec's `motion`/LazyMotion was replaced by ~4 KB of vanilla JS + CSS — same
   §5 behavior, but the site ships **zero framework JavaScript** (spec budget was
-  ≤130 KB; we ship ~2 KB). See README "The point" and `docs/UPDATING.md` before
+  ≤130 KB; we ship ~3.5 KB gz). See README "The point" and `docs/UPDATING.md` before
   ever adding a `'use client'` component.
 - Hosting: Vercel Hobby as a static export, `*.vercel.app` until a domain is set.
 - Live: https://cv-website-nilswyser.vercel.app (Lighthouse mobile 98/100/100/100,

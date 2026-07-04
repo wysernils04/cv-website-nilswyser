@@ -65,7 +65,7 @@ export function Projects({content}: {content: Content['projects']}) {
               {/* Visual slot — real screenshot/diagram only (§4.5). Until the
                   asset exists, an honest flagged note fills the frame. */}
               {project.visual ? (
-                <div className="overflow-hidden border border-line">
+                <div className="project-visual overflow-hidden border border-line">
                   {/* Plain img on purpose: static export ships no JS, and the
                       explicit dimensions guarantee zero layout shift. Hover
                       scale per §4.5 card anatomy. */}
