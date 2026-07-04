@@ -19,7 +19,7 @@ export const de: Content = {
     body: [
       'Betriebsinformatiker EFZ, ausgebildet bei F. Hoffmann-La Roche in Manufacturing IT, Roche Services & Solutions und PRED Data & Analytics.',
       'Zurzeit absolviere ich ein IT-Praktikum bei Baumann & Cie, Banquiers in Basel [PLACEHOLDER: confirm employer may be named publicly] und arbeite an Report-Konsolidierung und Testautomatisierung.',
-      'Mir sind Systeme wichtig, die korrekt bleiben, nachdem ich sie übergeben habe: dokumentiert, getestet und im besten Sinne unaufgeregt.'
+      'Was ich übergebe, ist dokumentiert, getestet und im besten Sinne unaufgeregt.'
     ],
     closing:
       '[PLACEHOLDER: one personal closing sentence from Nils — interest/angle, e.g. music/DJing, only if he wants it public]',

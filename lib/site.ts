@@ -23,7 +23,7 @@ export const localeMeta: Record<
   de: {
     title: 'Nils Wyser — IT-Spezialist, Basel',
     description:
-      'IT-Spezialist in Basel. Ich baue zuverlässige Daten- und Reporting-Systeme — von Oracle-Reports bis Developer-Tooling in Python und TypeScript.',
+      'IT-Spezialist in Basel. Ich baue zuverlässige Daten- und Reporting-Systeme — von Oracle-Report-Pipelines bis Developer-Tooling in Python und TypeScript.',
     ogLocale: 'de_CH'
   },
   en: {

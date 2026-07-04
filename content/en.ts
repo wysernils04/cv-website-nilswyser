@@ -16,7 +16,7 @@ export const en: Content = {
     body: [
       'Betriebsinformatiker EFZ, trained at F. Hoffmann-La Roche across Manufacturing IT, Roche Services & Solutions, and PRED Data & Analytics.',
       'Currently completing an IT internship at Baumann & Cie, Banquiers in Basel [PLACEHOLDER: confirm employer may be named publicly], working on report consolidation and test automation.',
-      'I care about systems that stay correct after I hand them over: documented, tested, and boring in the best way.'
+      'What I hand over is documented, tested, and boring in the best way.'
     ],
     closing:
       '[PLACEHOLDER: one personal closing sentence from Nils — interest/angle, e.g. music/DJing, only if he wants it public]',
@@ -39,7 +39,7 @@ export const en: Content = {
         bullets: [
           'Consolidating multilingual SAP Crystal Reports (DE/FR/EN) into single Oracle-backed base reports.',
           'Built Python test tooling to validate report migrations: rendering, diffing, regression dashboards.',
-          'Technical documentation for internal reporting tools.',
+          'Writing technical documentation for internal reporting tools.',
           '[PLACEHOLDER: employer-approved final wording]'
         ]
       },
@@ -75,7 +75,7 @@ export const en: Content = {
       {
         name: 'Solaris2',
         description:
-          'Website for a client to present and rent out her chalet in Wallis. [PLACEHOLDER: one line on scope — design, build, booking/inquiry flow?]',
+          'Website for a client to present and rent out her chalet in Valais. [PLACEHOLDER: one line on scope — design, build, booking/inquiry flow?]',
         tags: ['[PLACEHOLDER: stack]'],
         href: '[PLACEHOLDER: live URL + permission to show client name/screenshots]',
         visualNote: '[PLACEHOLDER: screenshot]'

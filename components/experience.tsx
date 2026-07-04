@@ -23,7 +23,7 @@ export function Experience({content}: {content: Content['experience']}) {
               aria-label={`${entry.role} — ${entry.org}`}
             >
               <div className="flex items-baseline gap-4 md:col-span-3 md:flex-col md:gap-2">
-                <span className="eyebrow" style={{color: 'var(--accent-text)'}}>
+                <span className="eyebrow" style={{color: 'var(--text)'}}>
                   {entry.index}
                 </span>
                 <span className="eyebrow">
