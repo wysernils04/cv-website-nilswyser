@@ -14,25 +14,25 @@ Legend: 🔴 blocks a real launch · 🟡 improves the site · ⚪ optional / ni
 - [ ] ⚪ **Domain** — `nilswyser.ch` / `.dev`? Launches on `*.vercel.app` until decided. — §10.1
 
 ## About
-- [ ] 🔴 **Employer may be named publicly?** (Baumann & Cie, Banquiers) — gates §4.3 + §4.4 wording. — §10.4
+- [x] ~~🔴 **Employer may be named publicly?**~~ — approved; named in About + Experience.
 - [x] ~~🟡 **English level**~~ — resolved: C1.
 - [ ] ⚪ **Availability / open-to line** (if any). — §10.10
 - [ ] ⚪ **Personal closing sentence** (music/DJing angle?) — yes/no + wording. — §10.11
 
 ## Experience
 - [x] ~~🔴 **Internship start date**~~ — resolved: May 2026 (Mai 2026 – heute / May 2026 – present).
-- [ ] 🔴 **Employer-approved bullet wording** for the internship (report consolidation, test tooling, docs). — §10.4
+- [x] ~~🔴 **Employer-approved bullet wording**~~ — approved as drafted.
 - [x] ~~🔴 **Roche apprenticeship years**~~ — resolved: 2020–2024.
-- [ ] 🟡 **2–3 result bullets per Roche rotation** (Manufacturing IT · RSS · PRED) — reuse CV bullets. — §4.4/§10.8
+- [x] ~~🟡 **Roche result bullets**~~ — adapted from the CV (Manufacturing IT, RSS chatbots/microservices, PRED DELT).
 - [x] ~~🟡 **Berufsmaturität direction + completion year**~~ — resolved: technische Richtung, 2025.
 - [ ] ⚪ **Passerelle / university plans** — mention (ambition) or omit (availability)? Omitted until answered. — §10.9
 
 ## Projects
-- [ ] 🟡 **learning-assistant-mcp visual** — architecture diagram or terminal screenshot from the repo. — §4.5
-- [ ] 🔴 **Solaris2 scope line** — one sentence (design, build, booking/inquiry flow?). — §10.7
-- [ ] 🔴 **Solaris2 stack** (tags). — §10.7
-- [ ] 🔴 **Solaris2 live URL + permission** to show client name/screenshots. — §10.7
-- [ ] 🟡 **Solaris2 screenshot** asset. — §10.7
+- [x] ~~🟡 **learning-assistant-mcp visual**~~ — the repo's Mermaid architecture diagram, rendered dark (`public/projects/learning-assistant-architecture.png`).
+- [x] ~~🔴 **Solaris2 scope line**~~ — gallery, arrival info, direct inquiry (matches the live site).
+- [x] ~~🔴 **Solaris2 stack**~~ — React · TypeScript · Vite (from the source repo + shipped bundle).
+- [x] ~~🔴 **Solaris2 live URL**~~ — https://solaris-albinen.ch; screenshot used, client not named.
+- [x] ~~🟡 **Solaris2 screenshot**~~ — `public/projects/solaris2.jpg` (live-site capture).
 - [ ] ⚪ **Crystal Reports Migration Test Framework** card — employer approval to describe; omitted until approved. — §4.5
 
 ## Skills
@@ -40,9 +40,9 @@ Legend: 🔴 blocks a real launch · 🟡 improves the site · ⚪ optional / ni
 - [ ] 🟡 **Confirm/extend Tooling & Infrastructure** (Docker · Git · CI). — §4.6
 
 ## Assets & meta
-- [ ] 🟡 **CV PDF** (DE + EN) — supply files, or the download link stays omitted. — §10.5
+- [ ] 🟡 **CV PDF** (DE + EN) — a Lebenslauf PDF exists in ~/Downloads but contains your home address, phone and birth date; strip those before publishing a web version. Link stays omitted. — §10.5
 - [ ] ⚪ **Portrait photo** — include one? Supply asset (no stock, no AI). — §10.6
-- [ ] 🟡 **Site repo public?** — enables the footer "View source" link (recommended). — §10.12
+- [x] ~~🟡 **Site repo public?**~~ — public at https://github.com/wysernils04/cv-website-nilswyser; footer View-source live. History scrubbed before publishing.
 
 ## Resolved by the build (defaults chosen — change if you disagree)
 - GitHub: `https://github.com/wysernils04` (from §4.5/§4.7) — wired live.
