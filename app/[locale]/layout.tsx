@@ -99,8 +99,17 @@ export default async function LocaleLayout({children, params}: Props) {
   // Enables static rendering for this locale (§6 rendering rule).
   setRequestLocale(locale);
 
+  // suppressHydrationWarning (here and on every element the inline enhancement
+  // script mutates): in production nothing hydrates — the runtime is stripped —
+  // but in `next dev` React hydrates and would warn about attributes the script
+  // has already set (the js class, reveal states, scroll-driven styles). Those
+  // attributes are client-owned by design.
   return (
-    <html lang={locale} className={`${archivo.variable} ${geistMono.variable}`}>
+    <html
+      lang={locale}
+      className={`${archivo.variable} ${geistMono.variable}`}
+      suppressHydrationWarning
+    >
       <body>
         {/* Before first paint: mark JS availability. Hidden pre-animation
             states in CSS apply only under html.js — so without JavaScript the

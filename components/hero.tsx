@@ -32,11 +32,11 @@ export function Hero({eyebrow, name, valueProp, ctaPrimary, ctaSecondary, cvLink
       <div className="shell relative w-full pt-28 pb-24 md:pt-32">
         {/* data-hero-fade: the enhancement script parallaxes these away at
             staggered rates while the pinned name condenses above them */}
-        <p className="eyebrow max-w-md" data-hero-fade="1">
+        <p className="eyebrow max-w-md" data-hero-fade="1" suppressHydrationWarning>
           <FlaggedText text={eyebrow} />
         </p>
 
-        <h1 className="hero-name" aria-label={name}>
+        <h1 className="hero-name" aria-label={name} suppressHydrationWarning>
           {/* Letters are aria-hidden — the h1's aria-label carries the name, so
               screen readers don't spell it out character by character. Words
               wrap as units; letters never break mid-word. */}
@@ -49,6 +49,7 @@ export function Hero({eyebrow, name, valueProp, ctaPrimary, ctaSecondary, cvLink
                     <span
                       key={ci}
                       className="hero-letter"
+                      suppressHydrationWarning
                       style={{animationDelay: `${0.12 + letterIndex++ * 0.05}s`}}
                     >
                       {char}
@@ -67,6 +68,7 @@ export function Hero({eyebrow, name, valueProp, ctaPrimary, ctaSecondary, cvLink
         <p
           className="mt-8 max-w-[46ch] text-[color:var(--text-2)] md:mt-10 md:text-[1.2rem]"
           data-hero-fade="2"
+          suppressHydrationWarning
         >
           {valueProp}
         </p>
@@ -74,6 +76,7 @@ export function Hero({eyebrow, name, valueProp, ctaPrimary, ctaSecondary, cvLink
         <div
           className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4 md:mt-12"
           data-hero-fade="3"
+          suppressHydrationWarning
         >
           <a href={ctaPrimary.href} className="cta-primary">
             {ctaPrimary.label}

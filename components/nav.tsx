@@ -16,7 +16,7 @@ export function Nav({locale}: {locale: string}) {
     <header className="fixed inset-x-0 top-0 z-50">
       <div className="relative border-b border-line bg-[color-mix(in_oklab,var(--bg)_82%,transparent)] backdrop-blur-md">
         {/* scroll progress hairline — driven by the enhancement script */}
-        <span aria-hidden data-progress="" className="nav-progress" />
+        <span aria-hidden data-progress="" className="nav-progress" suppressHydrationWarning />
         <nav
           aria-label={t('primaryLabel')}
           className="shell flex h-16 items-center justify-between gap-4"
@@ -30,12 +30,12 @@ export function Nav({locale}: {locale: string}) {
           <ul data-nav="" className="relative hidden items-center gap-7 md:flex">
             {items.map(({id, label}) => (
               <li key={id}>
-                <a href={`#${id}`} className="eyebrow inline-block py-2">
+                <a href={`#${id}`} className="eyebrow inline-block py-2" suppressHydrationWarning>
                   <span>{label}</span>
                 </a>
               </li>
             ))}
-            <span aria-hidden data-nav-indicator="" className="nav-indicator" />
+            <span aria-hidden data-nav-indicator="" className="nav-indicator" suppressHydrationWarning />
           </ul>
 
           <div className="flex items-center gap-4">

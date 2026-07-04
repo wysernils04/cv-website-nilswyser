@@ -21,6 +21,7 @@ export function Reveal({children, delay = 0, as = 'div', className}: RevealProps
   return (
     <Tag
       data-reveal=""
+      suppressHydrationWarning
       className={className}
       style={delay ? {transitionDelay: `${delay}s`} : undefined}
     >

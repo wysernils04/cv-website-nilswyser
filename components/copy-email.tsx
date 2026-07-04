@@ -11,6 +11,7 @@ export function CopyEmail({email}: {email: string}) {
     <button
       type="button"
       hidden
+      suppressHydrationWarning
       data-copy={email}
       data-copied-label={t('copied')}
       className="eyebrow cursor-pointer border border-line px-3 py-2 text-fg transition-colors duration-150 hover:border-[var(--accent)]"

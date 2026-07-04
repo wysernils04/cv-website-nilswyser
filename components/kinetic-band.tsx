@@ -10,7 +10,7 @@ export function KineticBand({phrase}: {phrase: string}) {
   return (
     <div aria-hidden data-kinetic="" className="kinetic">
       {/* two identical halves → seamless wrap at half the track width */}
-      <div data-kinetic-track="" className="kinetic-track">
+      <div data-kinetic-track="" className="kinetic-track" suppressHydrationWarning>
         <span>{run}</span>
         <span>{run}</span>
       </div>
