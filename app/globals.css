@@ -162,13 +162,15 @@ a {
   }
 
   /* ---- Hero signature ---- */
-  /* The slot holds the name's place while the pin lifts the h1 out of the
-     flow. The enhancement script sizes it to the name's real resting height
-     (1 or 2 lines depending on viewport), so the text below sits snug and
-     nothing ever jumps. Without JS it simply wraps the name. */
+  /* The slot reserves the full 2-line box: when compression reflows the name
+     from two lines to one mid-scroll — or the pin lifts the name out of the
+     flow entirely — nothing below it may jump (CLS discipline). */
   .hero-name-slot {
     font-size: var(--step-display);
     line-height: 0.9;
+    /* height is pinned to the name's natural rest height by the enhancement
+       script (so the pin phase can't collapse it); without JS the flow is
+       natural and nothing ever moves. */
     margin-top: 0.14em;
   }
   .hero-name {
@@ -277,12 +279,12 @@ html.js .hero-letter {
 @media (prefers-reduced-motion: no-preference) {
   html.js .hero-name--fixed {
     position: fixed;
-    top: 84px;
+    top: 72px;
     z-index: 40;
     background: var(--bg);
     /* seal the strip between the nav (64px) and the name so passing content
        never flashes through the gap */
-    box-shadow: 0 -24px 0 0 var(--bg);
+    box-shadow: 0 -12px 0 0 var(--bg);
     pointer-events: none;
     will-change: transform, opacity;
   }

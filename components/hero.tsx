@@ -70,7 +70,7 @@ export function Hero({eyebrow, name, valueProp, ctaPrimary, ctaSecondary, cvLink
         </div>
 
         <p
-          className="mt-6 max-w-[46ch] text-[color:var(--text-2)] md:mt-8 md:text-[1.2rem]"
+          className="mt-6 max-w-[46ch] text-[color:var(--text-2)] md:mt-7 md:text-[1.2rem]"
           data-hero-fade="2"
           suppressHydrationWarning
         >
@@ -78,7 +78,7 @@ export function Hero({eyebrow, name, valueProp, ctaPrimary, ctaSecondary, cvLink
         </p>
 
         <div
-          className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4 md:mt-10"
+          className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4 md:mt-9"
           data-hero-fade="3"
           suppressHydrationWarning
         >
