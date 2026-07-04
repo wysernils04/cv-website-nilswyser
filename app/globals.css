@@ -179,7 +179,9 @@ a {
     letter-spacing: -0.02em;
     text-transform: uppercase;
     color: var(--text);
-    transform-origin: left 50%;
+    /* dissolve scales from the top-left so the pinned name recedes into the
+       nav line and its gap seal never detaches */
+    transform-origin: left top;
     /* static expanded state — the JS width-axis driver takes over from here */
     font-variation-settings: "wght" 700, "wdth" 125;
   }
@@ -278,6 +280,9 @@ html.js .hero-letter {
     top: 72px;
     z-index: 40;
     background: var(--bg);
+    /* seal the strip between the nav (64px) and the name so passing content
+       never flashes through the gap */
+    box-shadow: 0 -12px 0 0 var(--bg);
     pointer-events: none;
     will-change: transform, opacity;
   }
