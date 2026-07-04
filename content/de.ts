@@ -18,7 +18,7 @@ export const de: Content = {
     heading: 'Ich baue Systeme, die nach der Übergabe korrekt bleiben.',
     body: [
       'Betriebsinformatiker EFZ, ausgebildet bei F. Hoffmann-La Roche in Manufacturing IT, Roche Services & Solutions und PRED Data & Analytics.',
-      'Zurzeit absolviere ich ein IT-Praktikum bei Baumann & Cie, Banquiers in Basel [PLACEHOLDER: confirm employer may be named publicly] und arbeite an Report-Konsolidierung und Testautomatisierung.',
+      'Zurzeit absolviere ich ein IT-Praktikum bei Baumann & Cie, Banquiers in Basel und arbeite an Report-Konsolidierung und Testautomatisierung.',
       'Was ich übergebe, ist dokumentiert, getestet und im besten Sinne unaufgeregt.'
     ],
     closing:
@@ -42,8 +42,7 @@ export const de: Content = {
         bullets: [
           'Konsolidierung mehrsprachiger SAP Crystal Reports (DE/FR/EN) zu einzelnen, Oracle-gestützten Basis-Reports.',
           'Python-Test-Tooling zur Validierung von Report-Migrationen: Rendering, Diffing, Regressions-Dashboards.',
-          'Technische Dokumentation für interne Reporting-Tools.',
-          '[PLACEHOLDER: employer-approved final wording]'
+          'Technische Dokumentation für interne Reporting-Tools.'
         ]
       },
       {
@@ -54,7 +53,9 @@ export const de: Content = {
         period: '2020–2024',
         bullets: [
           'Rotationen: Manufacturing IT · Roche Services & Solutions · PRED Data & Analytics.',
-          '[PLACEHOLDER: 2–3 result-oriented bullets per rotation or overall — reuse the CV bullets Nils already wrote]'
+          'On-site IT-Support für die Pharmaproduktion: GxP/GMP-reguliertes Umfeld, Hardware-Support und Labor-Inventar in Basel und Kaiseraugst.',
+          'Software-Lösungen und Integrationen für interne IT-Systeme, darunter Chatbots zur Automatisierung des User-Supports und Microservices für Skalierbarkeit und Wartbarkeit.',
+          'Modernisierung eines Systems für DNA-Encoded Library Technology (DELT): Micro-Frontend-Webentwicklung und Microservices im Scrum-Team.'
         ]
       }
     ],
@@ -70,18 +71,30 @@ export const de: Content = {
       {
         name: 'learning-assistant-mcp',
         description:
-          'Ein MCP-Server für Claude, der Lernen plant und unterstützt: Spaced-Repetition-Planung (SM-2), ein Obsidian-Vault als Single Source of Truth, SQLite-Indexierung und Google-Calendar-Integration.',
+          'Ein MCP-Server für Claude, der Lernen plant und unterstützt: Spaced-Repetition-Planung (SM-2), ein Obsidian-Vault als Single Source of Truth, SQLite-Indexierung und SBB-Pendelzeiten für optimale Lernfenster.',
         tags: ['Python', 'MCP', 'SQLite', 'Obsidian'],
         href: 'https://github.com/wysernils04/learning-assistant-mcp',
-        visualNote: '[PLACEHOLDER: architecture diagram or terminal capture]'
+        visualNote: '',
+        visual: {
+          src: '/projects/learning-assistant-architecture.png',
+          alt: 'Architekturdiagramm: Claude Desktop spricht über MCP mit dem Learning-Assistant-Server; atomarer Dual-Write in Obsidian-Vault und SQLite, SM-2-Scheduling, SBB-OpenData-API.',
+          width: 2254,
+          height: 1990
+        }
       },
       {
         name: 'Solaris2',
         description:
-          'Website für eine Kundin, um ihr Chalet im Wallis zu präsentieren und zu vermieten. [PLACEHOLDER: one line on scope — design, build, booking/inquiry flow?]',
-        tags: ['[PLACEHOLDER: stack]'],
-        href: '[PLACEHOLDER: live URL + permission to show client name/screenshots]',
-        visualNote: '[PLACEHOLDER: screenshot]'
+          'Website für eine Kundin: Präsentation und Vermietung ihrer Ferienwohnung in Albinen (Wallis) — Galerie, Anreise-Informationen und direkte Anfrage.',
+        tags: ['React', 'TypeScript', 'Vite'],
+        href: 'https://solaris-albinen.ch',
+        visualNote: '',
+        visual: {
+          src: '/projects/solaris2.jpg',
+          alt: 'Screenshot der Solaris2-Website: Hero mit Chalet-Foto in Albinen, Belegungs-Kennzahlen und Galerie.',
+          width: 1400,
+          height: 875
+        }
       }
     ]
   },

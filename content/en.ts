@@ -15,7 +15,7 @@ export const en: Content = {
     heading: 'I build systems that stay correct after I hand them over.',
     body: [
       'Betriebsinformatiker EFZ, trained at F. Hoffmann-La Roche across Manufacturing IT, Roche Services & Solutions, and PRED Data & Analytics.',
-      'Currently completing an IT internship at Baumann & Cie, Banquiers in Basel [PLACEHOLDER: confirm employer may be named publicly], working on report consolidation and test automation.',
+      'Currently completing an IT internship at Baumann & Cie, Banquiers in Basel, working on report consolidation and test automation.',
       'What I hand over is documented, tested, and boring in the best way.'
     ],
     closing:
@@ -39,8 +39,7 @@ export const en: Content = {
         bullets: [
           'Consolidating multilingual SAP Crystal Reports (DE/FR/EN) into single Oracle-backed base reports.',
           'Built Python test tooling to validate report migrations: rendering, diffing, regression dashboards.',
-          'Writing technical documentation for internal reporting tools.',
-          '[PLACEHOLDER: employer-approved final wording]'
+          'Writing technical documentation for internal reporting tools.'
         ]
       },
       {
@@ -51,7 +50,9 @@ export const en: Content = {
         period: '2020–2024',
         bullets: [
           'Rotations: Manufacturing IT · Roche Services & Solutions · PRED Data & Analytics.',
-          '[PLACEHOLDER: 2–3 result-oriented bullets per rotation or overall — reuse the CV bullets Nils already wrote]'
+          'On-site IT support for pharmaceutical production: GxP/GMP-regulated environment, hardware support, and lab inventory across Basel and Kaiseraugst.',
+          'Software solutions and integrations for internal IT systems, including chatbots that automated user support and microservices built for scalability and maintainability.',
+          'Modernised a system for DNA-Encoded Library Technology (DELT): micro-frontend web development and microservices in a Scrum team.'
         ]
       }
     ],
@@ -67,18 +68,30 @@ export const en: Content = {
       {
         name: 'learning-assistant-mcp',
         description:
-          'An MCP server for Claude that plans and assists learning: spaced-repetition scheduling (SM-2), an Obsidian vault as the source of truth, SQLite indexing, and Google Calendar integration.',
+          'An MCP server for Claude that plans and assists learning: spaced-repetition scheduling (SM-2), an Obsidian vault as the source of truth, SQLite indexing, and SBB commute times for optimal study slots.',
         tags: ['Python', 'MCP', 'SQLite', 'Obsidian'],
         href: 'https://github.com/wysernils04/learning-assistant-mcp',
-        visualNote: '[PLACEHOLDER: architecture diagram or terminal capture]'
+        visualNote: '',
+        visual: {
+          src: '/projects/learning-assistant-architecture.png',
+          alt: 'Architecture diagram: Claude Desktop talks to the learning-assistant server over MCP; atomic dual-write to an Obsidian vault and SQLite, SM-2 scheduling, SBB OpenData API.',
+          width: 2254,
+          height: 1990
+        }
       },
       {
         name: 'Solaris2',
         description:
-          'Website for a client to present and rent out her chalet in Valais. [PLACEHOLDER: one line on scope — design, build, booking/inquiry flow?]',
-        tags: ['[PLACEHOLDER: stack]'],
-        href: '[PLACEHOLDER: live URL + permission to show client name/screenshots]',
-        visualNote: '[PLACEHOLDER: screenshot]'
+          'Website for a client to present and rent out her holiday apartment in Albinen (Valais) — gallery, arrival information, and a direct inquiry flow.',
+        tags: ['React', 'TypeScript', 'Vite'],
+        href: 'https://solaris-albinen.ch',
+        visualNote: '',
+        visual: {
+          src: '/projects/solaris2.jpg',
+          alt: 'Screenshot of the Solaris2 website: hero with a photo of the chalet in Albinen, occupancy facts, and gallery.',
+          width: 1400,
+          height: 875
+        }
       }
     ]
   },
