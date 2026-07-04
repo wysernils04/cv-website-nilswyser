@@ -162,18 +162,24 @@ a {
   }
 
   /* ---- Hero signature ---- */
+  /* The slot reserves the full 2-line box: when compression reflows the name
+     from two lines to one mid-scroll — or the pin lifts the name out of the
+     flow entirely — nothing below it may jump (CLS discipline). */
+  .hero-name-slot {
+    font-size: var(--step-display);
+    line-height: 0.9;
+    height: 1.8em;
+    margin-top: 0.14em;
+  }
   .hero-name {
     display: block;
-    margin-top: 0.14em;
     font-family: var(--font-archivo), sans-serif;
     font-size: var(--step-display);
     line-height: 0.9;
     letter-spacing: -0.02em;
     text-transform: uppercase;
     color: var(--text);
-    /* Reserve the 2-line box: when compression reflows the name from two lines
-       to one mid-scroll, nothing below it may jump (CLS discipline). */
-    min-height: 1.8em;
+    transform-origin: left 50%;
     /* static expanded state — the JS width-axis driver takes over from here */
     font-variation-settings: "wght" 700, "wdth" 125;
   }
@@ -262,15 +268,18 @@ html.js .hero-letter {
   }
 }
 
-/* Signature pin (§5.4), JS + motion-tolerant contexts only: the name sticks
-   under the nav while the width axis condenses, then the section end pushes it
-   away. Solid background lets hero content slide beneath it cleanly. */
+/* Signature pin (§5.4), JS + motion-tolerant contexts only: the scroll driver
+   fixes the name under the nav while everything scrolls past beneath its solid
+   background, all the way to the hero/About divider — where it shrinks and
+   fades out. The class and its geometry are applied by the script. */
 @media (prefers-reduced-motion: no-preference) {
-  html.js .hero-name {
-    position: sticky;
+  html.js .hero-name--fixed {
+    position: fixed;
     top: 72px;
-    z-index: 10;
+    z-index: 40;
     background: var(--bg);
+    pointer-events: none;
+    will-change: transform, opacity;
   }
 }
 
