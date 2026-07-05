@@ -1,0 +1,2 @@
+# Cloudflare Pages redirects — language-neutral root goes to the German default.
+/ /de 307
