@@ -43,3 +43,13 @@ next-env.d.ts
 # local agent instructions — not part of the public repo
 CLAUDE.md
 AGENTS.md
+
+# OpenNext
+.open-next
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+
+!.env.example
