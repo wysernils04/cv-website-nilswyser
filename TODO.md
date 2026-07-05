@@ -10,14 +10,14 @@ Legend: 🔴 blocks a real launch · 🟡 improves the site · ⚪ optional / ni
 ## Contact & identity
 - [x] ~~🔴 **Public email address**~~ — resolved: `nils.wyser@gmail.com` (mailto + copy button live).
 - [x] ~~🔴 **LinkedIn URL**~~ — resolved: `https://www.linkedin.com/in/nils-wyser` (confirmed against the CV; wired in contact, footer, JSON-LD `sameAs`).
-- [ ] 🟡 **Public location wording** for the hero eyebrow (currently `Basel, Switzerland`). — §4.2
+- [x] ~~🟡 **Public location wording**~~ — confirmed: `Basel, Schweiz` / `Basel, Switzerland`.
 - [ ] ⚪ **Domain** — `nilswyser.ch` / `.dev`? Launches on `*.vercel.app` until decided. — §10.1
 
 ## About
 - [x] ~~🔴 **Employer may be named publicly?**~~ — approved; named in About + Experience.
 - [x] ~~🟡 **English level**~~ — resolved: C1.
-- [ ] ⚪ **Availability / open-to line** (if any). — §10.10
-- [ ] ⚪ **Personal closing sentence** (music/DJing angle?) — yes/no + wording. — §10.11
+- [x] ~~⚪ **Availability / open-to line**~~ — resolved: in der Passerelle, offen für passende Praktika/Projekte im IT-Umfeld.
+- [x] ~~⚪ **Personal closing sentence**~~ — resolved: learning + building solutions that still work tomorrow (no music angle).
 
 ## Experience
 - [x] ~~🔴 **Internship start date**~~ — resolved: May 2026 (Mai 2026 – heute / May 2026 – present).
@@ -25,7 +25,7 @@ Legend: 🔴 blocks a real launch · 🟡 improves the site · ⚪ optional / ni
 - [x] ~~🔴 **Roche apprenticeship years**~~ — resolved: 2020–2024.
 - [x] ~~🟡 **Roche result bullets**~~ — adapted from the CV (Manufacturing IT, RSS chatbots/microservices, PRED DELT).
 - [x] ~~🟡 **Berufsmaturität direction + completion year**~~ — resolved: technische Richtung, 2025.
-- [ ] ⚪ **Passerelle / university plans** — mention (ambition) or omit (availability)? Omitted until answered. — §10.9
+- [x] ~~⚪ **Passerelle / university plans**~~ — answered: mentioned via the availability line in About.
 
 ## Projects
 - [x] ~~🟡 **learning-assistant-mcp visual**~~ — the repo's Mermaid architecture diagram, rendered dark (`public/projects/learning-assistant-architecture.png`).
@@ -36,8 +36,8 @@ Legend: 🔴 blocks a real launch · 🟡 improves the site · ⚪ optional / ni
 - [ ] ⚪ **Crystal Reports Migration Test Framework** card — employer approval to describe; omitted until approved. — §4.5
 
 ## Skills
-- [ ] 🟡 **Confirm Next.js/React** should be listed under Frameworks. — §4.6
-- [ ] 🟡 **Confirm/extend Tooling & Infrastructure** (Docker · Git · CI). — §4.6
+- [x] ~~🟡 **Confirm Next.js/React**~~ — confirmed, listed under Frameworks.
+- [x] ~~🟡 **Confirm/extend Tooling & Infrastructure**~~ — confirmed as drafted (Docker · Git · CI).
 
 ## Assets & meta
 - [ ] 🟡 **CV PDF** (DE + EN) — a Lebenslauf PDF exists in ~/Downloads but contains your home address, phone and birth date; strip those before publishing a web version. Link stays omitted. — §10.5

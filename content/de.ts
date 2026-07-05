@@ -7,7 +7,7 @@ import type {Content} from './schema';
 // and must grep identically across both locales.
 export const de: Content = {
   hero: {
-    eyebrow: 'IT-Spezialist — Basel, Schweiz [PLACEHOLDER: confirm public location wording]',
+    eyebrow: 'IT-Spezialist — Basel, Schweiz',
     name: 'Nils Wyser',
     valueProp:
       'Ich baue zuverlässige Daten- und Reporting-Systeme — von Oracle-gestützten Report-Pipelines bis zu Developer-Tooling in Python und TypeScript.',
@@ -22,12 +22,12 @@ export const de: Content = {
       'Was ich übergebe, ist dokumentiert, getestet und im besten Sinne unaufgeregt.'
     ],
     closing:
-      '[PLACEHOLDER: one personal closing sentence from Nils — interest/angle, e.g. music/DJing, only if he wants it public]',
+      'Ich lerne gerne Neues und entwickle Lösungen, die auch morgen noch funktionieren.',
     facts: [
       {label: 'Standort', value: 'Basel, Schweiz'},
       {label: 'Sprachen', value: 'Deutsch — Muttersprache · Englisch — C1'},
       {label: 'Fokus', value: 'Daten & Reporting · Backend · Tooling'},
-      {label: 'Verfügbarkeit', value: '[PLACEHOLDER: availability / open-to line, if any]'}
+      {label: 'Verfügbarkeit', value: 'Aktuell in der Passerelle und offen für passende Praktika oder Projekte im IT-Umfeld.'}
     ]
   },
   experience: {
@@ -111,7 +111,7 @@ export const de: Content = {
         label: 'Frameworks & Frontend',
         items: ['Angular', 'Next.js / React'],
         context:
-          'Angular in Produktion; diese Website läuft auf Next.js. [PLACEHOLDER: confirm Next.js/React should be listed]'
+          'Angular in Produktion; diese Website läuft auf Next.js.'
       },
       {
         label: 'Daten & Reporting',
@@ -123,7 +123,7 @@ export const de: Content = {
         label: 'Tooling & Infrastruktur',
         items: ['Docker', 'Git', 'CI'],
         context:
-          'Containerisierte Entwicklung, Git-basierte Workflows, CI für Tests. [PLACEHOLDER: confirm/extend]'
+          'Containerisierte Entwicklung, Git-basierte Workflows, CI für Tests.'
       }
     ]
   },

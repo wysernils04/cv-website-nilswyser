@@ -38,7 +38,7 @@ export function Hero({eyebrow, name, valueProp, ctaPrimary, ctaSecondary, cvLink
 
         {/* The slot holds the name's place in the flow while the scroll driver
             pins the h1 itself (position: fixed) under the nav. */}
-        <div className="hero-name-slot" data-name-slot="">
+        <div className="hero-name-slot" data-name-slot="" suppressHydrationWarning>
         <h1 className="hero-name" aria-label={name} suppressHydrationWarning>
           {/* Letters are aria-hidden — the h1's aria-label carries the name, so
               screen readers don't spell it out character by character. Words

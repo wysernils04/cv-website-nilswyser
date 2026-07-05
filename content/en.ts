@@ -4,7 +4,7 @@ import type {Content} from './schema';
 // voice, no exclamation marks, banned buzzwords avoided. Review at checkpoint ⏸5.
 export const en: Content = {
   hero: {
-    eyebrow: 'IT Specialist — Basel, Switzerland [PLACEHOLDER: confirm public location wording]',
+    eyebrow: 'IT Specialist — Basel, Switzerland',
     name: 'Nils Wyser',
     valueProp:
       'I build reliable data and reporting systems — from Oracle-backed report pipelines to developer tooling in Python and TypeScript.',
@@ -19,12 +19,12 @@ export const en: Content = {
       'What I hand over is documented, tested, and boring in the best way.'
     ],
     closing:
-      '[PLACEHOLDER: one personal closing sentence from Nils — interest/angle, e.g. music/DJing, only if he wants it public]',
+      'I enjoy learning new things and building solutions that continue to work tomorrow.',
     facts: [
       {label: 'Location', value: 'Basel, Switzerland'},
       {label: 'Languages', value: 'German — native · English — C1'},
       {label: 'Focus', value: 'Data & Reporting · Backend · Tooling'},
-      {label: 'Availability', value: '[PLACEHOLDER: availability / open-to line, if any]'}
+      {label: 'Availability', value: 'Currently enrolled in the Passerelle program and open to relevant internships or IT projects.'}
     ]
   },
   experience: {
@@ -108,7 +108,7 @@ export const en: Content = {
         label: 'Frameworks & Frontend',
         items: ['Angular', 'Next.js / React'],
         context:
-          'Angular in production; this site runs on Next.js. [PLACEHOLDER: confirm Next.js/React should be listed]'
+          'Angular in production; this site runs on Next.js.'
       },
       {
         label: 'Data & Reporting',
@@ -120,7 +120,7 @@ export const en: Content = {
         label: 'Tooling & Infrastructure',
         items: ['Docker', 'Git', 'CI'],
         context:
-          'Containerised development, Git-based workflows, CI for tests. [PLACEHOLDER: confirm/extend]'
+          'Containerised development, Git-based workflows, CI for tests.'
       }
     ]
   },
