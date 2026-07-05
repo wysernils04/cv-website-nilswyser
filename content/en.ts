@@ -127,7 +127,7 @@ export const en: Content = {
   contact: {
     heading: "Let's talk.",
     lead: 'The fastest way to reach me is email.',
-    email: 'nils.wyser@gmail.com',
+    email: 'info@nilswyser.ch',
     linkedin: 'https://www.linkedin.com/in/nils-wyser'
   }
 };

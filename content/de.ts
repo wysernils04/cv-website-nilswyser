@@ -130,7 +130,7 @@ export const de: Content = {
   contact: {
     heading: 'Sprechen wir.',
     lead: 'Am schnellsten erreichen Sie mich per E-Mail.',
-    email: 'nils.wyser@gmail.com',
+    email: 'info@nilswyser.ch',
     linkedin: 'https://www.linkedin.com/in/nils-wyser'
   }
 };
